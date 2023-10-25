@@ -10,33 +10,35 @@ import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
 import com.soa.bussines.ClienteBusiness;
+import com.soa.bussines.PeliculaBussines;
 import com.soa.dto.Respuesta;
 import com.soa.dto.Cliente;
+import com.soa.dto.Pelicula;
 
 /**
- * crea los clientes 
+ * Agregar peliculas nuevas
  */
 @Component // genera un objeto de la capa bussines
-public class ArtemisListener {
+public class ArtemisListenerPelicula {
 
     @Autowired // inyecta el objeto
-    private ClienteBusiness business;
+    private PeliculaBussines business;
 
     @Autowired // inyecta el objeto
     public JmsSender sender;
 
     // nombre de la cola de micro sercvicos
-    @Value("${queue.name.out}")
+    @Value("${pelicula.queue.name.out}")
     public String outQueueName;
 
-    @JmsListener(destination = "${queue.name.in}")
+    @JmsListener(destination = "${pelicula.queue.name.in}")
     public void receive(String message) {
         System.out.println(String.format("Received message: %s", message));
         // convierte un gson en una objeto
         Gson gson = new Gson();
-        Cliente usuarios = gson.fromJson(message, Cliente.class);
-        System.out.println(usuarios);
-        Respuesta respuesta = business.add(usuarios);
+        Pelicula pelicula= gson.fromJson(message, Pelicula.class);
+        System.out.println(pelicula);
+        Respuesta respuesta = business.add(pelicula);
         System.out.println("Resultado de la consulta" + respuesta);
         try {
             sender.sendMessage(respuesta.toString(), outQueueName);

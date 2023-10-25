@@ -6,7 +6,7 @@ package com.soa.dto;
 import com.google.gson.Gson;
 
 /**
- * 
+ * mapea un json de tipo cliente
  */
 public class Cliente {
 

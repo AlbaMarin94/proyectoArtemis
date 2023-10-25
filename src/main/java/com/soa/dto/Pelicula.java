@@ -7,7 +7,7 @@ public class Pelicula {
     private String nombre;
     private Integer id;
     private Integer tiempo;
-
+    
     @Override // sobre escritura
     public String toString() {
         Gson gson = new Gson();
