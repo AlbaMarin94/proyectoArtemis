@@ -16,7 +16,7 @@ import com.soa.dto.Renta;
 import com.soa.dto.Respuesta;
 
 /**
- * 
+ * rentar eliculas por el nombre d ela pelicula, la duracion en sg y el id del cliente
  */
 @Component // genera un objeto de la capa bussines
 public class ArtemisListenerRenta {

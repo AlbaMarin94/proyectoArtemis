@@ -16,16 +16,16 @@ import com.soa.dto.Cliente;
 /**
  * crea los clientes 
  */
-@Component // genera un objeto de la capa bussines
+@Component // genera un objeto de la capa bussines a
 public class ArtemisListener {
 
-    @Autowired // inyecta el objeto
+    @Autowired // inyecta el objeto l
     private ClienteBusiness business;
 
-    @Autowired // inyecta el objeto
+    @Autowired // inyecta el objeto b
     public JmsSender sender;
 
-    // nombre de la cola de micro sercvicos
+    // nombre de la cola de micro sercvicos a
     @Value("${queue.name.out}")
     public String outQueueName;
 
